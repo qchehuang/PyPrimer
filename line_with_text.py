@@ -4,20 +4,13 @@ import matplotlib.lines as lines
 import matplotlib.transforms as mtransforms
 import matplotlib.text as mtext
 
-from mmap import mmap,ACCESS_READ
-from xlrd import open_workbook
+import xlrd
+import xlwt
+import xlutils
 
-class MyExcel():
-   def open_excel(file_name):
-	print open_workbook(file_name)
-        
-	#with open(file_name,'rb') as f:
-        #print open_workbook(
-        #	file_contents=mmap(f.fileno(),0,access=ACCESS_READ)
-        #)
-	aString = open('simple.xls','rb').read()
-	print open_workbook(file_contents=aString)
-
+class MyExcel(excel_name):
+    def read_excel(excel_name):
+	
 
 class MyLine(lines.Line2D):
     def __init__(self, *args, **kwargs):
@@ -55,36 +48,9 @@ class MyLine(lines.Line2D):
         self.text.draw(renderer)
 
 fig, ax = plt.subplots()
-x, y = np.random.rand(2, 10)
-print x
-print y
 
 x = np.array([0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])
 y = np.array([0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1])
-
-
-aString = open('test.xlsx','rb').read()
-wb = open_workbook(file_contents=aString)
-
-
-i = 1
-
-for s in wb.sheets():
-    #print 'Sheet:',s.name
-    for row in range(s.ncols):
-        values = []
-        i = i+1
-	for col in range(2,s.nrows):
-		values.append(s.cell(col,row).value)
-	#print values
-	print i
-	if (i == 3):
-		x = np.array(values)
-		print x
-	if (i == 4):
-		y = np.array(values)
-		print y 
-    print 
 
 line = MyLine(x, y, mfc='green', ms=12, label='line label')
 
