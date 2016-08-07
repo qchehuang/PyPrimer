@@ -67,9 +67,6 @@ y = np.array([0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1])
 myExcel = MyExcel('test.xlsx')
 wb = myExcel.open_excel()
 
-#aString = open('test.xlsx','rb').read()
-#wb = open_workbook(file_contents=aString)
-
 i = 1
 for s in wb.sheets():
     #print 'Sheet:',s.name
