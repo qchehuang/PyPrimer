@@ -4,14 +4,6 @@ import matplotlib.lines as lines
 import matplotlib.transforms as mtransforms
 import matplotlib.text as mtext
 
-import xlrd
-import xlwt
-import xlutils
-
-class MyExcel(excel_name):
-    def read_excel(excel_name):
-	
-
 class MyLine(lines.Line2D):
     def __init__(self, *args, **kwargs):
         # we'll update the position when the line data is set
@@ -47,16 +39,16 @@ class MyLine(lines.Line2D):
         lines.Line2D.draw(self, renderer)
         self.text.draw(renderer)
 
-fig, ax = plt.subplots()
+    fig, ax = plt.subplots()
 
-x = np.array([0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])
-y = np.array([0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1])
+    x = np.array([0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])
+    y = np.array([0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1])
 
-line = MyLine(x, y, mfc='green', ms=12, label='line label')
+    line = MyLine(x, y, mfc='green', ms=12, label='line label')
 
-line.text.set_color('red')
-line.text.set_fontsize(16)
+    line.text.set_color('red')
+    line.text.set_fontsize(16)
 
-ax.add_line(line)
+    ax.add_line(line)
 
-plt.show()
+    plt.show()
